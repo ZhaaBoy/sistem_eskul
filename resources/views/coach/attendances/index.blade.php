@@ -57,20 +57,24 @@
                                     <td><x-status-badge :status="$attendance->status" /></td>
                                     <td>{{ $attendance->rejection_reason ?? '-' }}</td>
                                     <td>
-                                        <div class="action-row justify-content-end">
-                                            <form method="POST" action="{{ route('coach.attendances.approve', $attendance) }}">
-                                                @csrf
-                                                <button class="btn btn-success btn-sm" type="submit"><i class="feather icon-check"></i></button>
-                                            </form>
-                                            <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse" data-target="#reject-attendance-{{ $attendance->id }}"><i class="feather icon-x"></i></button>
-                                        </div>
-                                        <div class="collapse mt-2" id="reject-attendance-{{ $attendance->id }}">
-                                            <form method="POST" action="{{ route('coach.attendances.reject', $attendance) }}" class="border rounded p-2">
-                                                @csrf
-                                                <div class="form-group mb-2"><textarea name="reason" class="form-control" rows="2" placeholder="Keterangan penolakan" required></textarea></div>
-                                                <button class="btn btn-danger btn-sm" type="submit">Tolak Absensi</button>
-                                            </form>
-                                        </div>
+                                        @if ($attendance->status === \App\Models\Attendance::WAITING)
+                                            <div class="action-row justify-content-end">
+                                                <form method="POST" action="{{ route('coach.attendances.approve', $attendance) }}">
+                                                    @csrf
+                                                    <button class="btn btn-success btn-sm" type="submit"><i class="feather icon-check"></i></button>
+                                                </form>
+                                                <button class="btn btn-danger btn-sm" type="button" data-toggle="collapse" data-target="#reject-attendance-{{ $attendance->id }}"><i class="feather icon-x"></i></button>
+                                            </div>
+                                            <div class="collapse mt-2" id="reject-attendance-{{ $attendance->id }}">
+                                                <form method="POST" action="{{ route('coach.attendances.reject', $attendance) }}" class="border rounded p-2">
+                                                    @csrf
+                                                    <div class="form-group mb-2"><textarea name="reason" class="form-control" rows="2" placeholder="Keterangan penolakan" required></textarea></div>
+                                                    <button class="btn btn-danger btn-sm" type="submit">Tolak Absensi</button>
+                                                </form>
+                                            </div>
+                                        @else
+                                            <span class="text-muted">Sudah diproses</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

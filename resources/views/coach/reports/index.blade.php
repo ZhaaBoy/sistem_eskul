@@ -13,11 +13,19 @@
         </div>
         <div class="card-body">
             <form method="GET" class="row mb-3">
-                <div class="col-md-10 mb-2">
-                    <select name="extracurricular_id" class="form-control">
-                        <option value="">Semua eskul</option>
-                        @foreach ($coach->extracurriculars as $extracurricular)
-                            <option value="{{ $extracurricular->id }}" @selected((string) request('extracurricular_id') === (string) $extracurricular->id)>{{ $extracurricular->name }}</option>
+                <div class="col-md-5 mb-2">
+                    <select name="period" class="form-control">
+                        <option value="">Semua periode</option>
+                        @foreach ($availablePeriods as $period)
+                            <option value="{{ $period }}" @selected(request('period') === $period)>{{ $period }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-5 mb-2">
+                    <select name="semester" class="form-control">
+                        <option value="">Semua semester</option>
+                        @foreach ($availableSemesters->merge(['Ganjil', 'Genap'])->unique() as $semester)
+                            <option value="{{ $semester }}" @selected(request('semester') === $semester)>{{ $semester }}</option>
                         @endforeach
                     </select>
                 </div>

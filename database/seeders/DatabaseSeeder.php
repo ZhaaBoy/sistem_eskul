@@ -23,5 +23,32 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'status' => 'aktif',
         ]);
+
+        User::updateOrCreate([
+            'email' => 'tadika@gmail.com',
+        ], [
+            'name' => 'Admin SMK Yappika',
+            'password' => 'tadika123',
+            'role' => 'siswa',
+            'status' => 'aktif',
+        ]);
+
+        User::updateOrCreate([
+            'email' => 'ortutadika@gmail.com',
+        ], [
+            'name' => 'Admin SMK Yappika',
+            'password' => 'tadika123',
+            'role' => 'orang tua',
+            'status' => 'aktif',
+        ]);
+
+        User::updateOrCreate([
+            'email' => 'asep@gmail.com',
+        ], [
+            'name' => 'Admin SMK Yappika',
+            'password' => 'asep1234',
+            'role' => 'pembina',
+            'status' => 'aktif',
+        ]);
     }
 }

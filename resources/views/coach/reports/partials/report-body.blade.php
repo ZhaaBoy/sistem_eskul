@@ -1,3 +1,8 @@
+<div class="mb-3">
+    <span class="badge badge-light">Periode: {{ $selectedPeriod ?: 'Semua' }}</span>
+    <span class="badge badge-light">Semester: {{ $selectedSemester ?: 'Semua' }}</span>
+</div>
+
 <h6>Data Anggota</h6>
 @if ($members->isEmpty())
     <x-empty-state message="Belum ada anggota aktif." />

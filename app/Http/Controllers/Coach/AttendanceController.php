@@ -35,6 +35,10 @@ class AttendanceController extends Controller
 
         $this->authorizeAttendance($coach, $attendance);
 
+        if ($attendance->status !== Attendance::WAITING) {
+            return back()->with('error', 'Absensi sudah diproses dan tidak bisa disetujui ulang.');
+        }
+
         $attendance->update([
             'status' => Attendance::APPROVED,
             'approved_at' => now(),
@@ -50,6 +54,10 @@ class AttendanceController extends Controller
         $coach = $this->currentCoach($request);
 
         $this->authorizeAttendance($coach, $attendance);
+
+        if ($attendance->status !== Attendance::WAITING) {
+            return back()->with('error', 'Absensi sudah diproses dan tidak bisa ditolak ulang.');
+        }
 
         $validated = $request->validate([
             'reason' => ['required', 'string', 'max:1000'],
