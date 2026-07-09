@@ -5,8 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="{{ asset('template/dist/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('template/dist/assets/css/style.css') }}">
+    <style>
+        .login-logo {
+            width: 96px;
+            height: 96px;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body>
     <div class="auth-wrapper">
@@ -15,7 +22,7 @@
                 <div class="row align-items-center text-center">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <img src="{{ asset('template/dist/assets/images/logo-dark.png') }}" alt="Logo" class="img-fluid mb-4">
+                            <img src="{{ asset('logo.png') }}" alt="Logo" class="img-fluid mb-4 login-logo">
                             <h4 class="mb-2 f-w-400">Sistem Informasi Eskul</h4>
                             <p class="text-muted mb-4">SMK Yappika Legok</p>
 

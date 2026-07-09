@@ -1,6 +1,12 @@
 @php
     $user = auth()->user();
     $role = $user?->role;
+    $avatarInitials =
+        collect(preg_split('/\s+/', trim((string) ($user?->name ?? 'User')), -1, PREG_SPLIT_NO_EMPTY))
+            ->map(fn($part) => strtoupper(substr($part, 0, 1)))
+            ->take(2)
+            ->implode('') ?:
+        'U';
     $menus = match ($role) {
         'admin' => [
             [
@@ -142,7 +148,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('template/dist/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('logo.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('template/dist/assets/css/style.css') }}">
     <style>
         .brand-title {
@@ -150,6 +156,32 @@
             font-weight: 700;
             letter-spacing: 0;
             font-size: 15px;
+        }
+
+        .pcoded-header .m-header .app-logo {
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+        }
+
+        .alphabet-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #1f4fb2;
+            font-weight: 700;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .pro-head .alphabet-avatar {
+            margin-right: 10px;
+            vertical-align: middle;
         }
 
         .table td,
@@ -229,7 +261,8 @@
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
             <a href="{{ route('dashboard') }}" class="b-brand">
-                <img src="{{ asset('template/dist/assets/images/logo-icon.png') }}" alt="Logo" class="logo-thumb">
+                <img src="{{ asset('logo.png') }}" alt="Logo" class="logo-thumb app-logo mr-2
+                ">
                 <span class="brand-title">Sistem Eskul</span>
             </a>
             <a href="#!" class="mob-toggler"><i class="feather icon-more-vertical"></i></a>
@@ -248,8 +281,9 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-notification">
                             <div class="pro-head">
-                                <img src="{{ asset('template/dist/assets/images/user/avatar-1.jpg') }}"
-                                    class="img-radius" alt="User">
+                                <span class="alphabet-avatar" aria-label="Avatar {{ $user?->name }}">
+                                    {{ $avatarInitials }}
+                                </span>
                                 <span>{{ $user?->name }}</span>
                                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                     @csrf
