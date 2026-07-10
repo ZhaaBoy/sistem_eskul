@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 06, 2026 at 05:27 PM
+-- Generation Time: Jul 10, 2026 at 03:09 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.16
 
@@ -41,13 +41,6 @@ CREATE TABLE `assessments` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `assessments`
---
-
-INSERT INTO `assessments` (`id`, `student_id`, `extracurricular_id`, `coach_id`, `period`, `semester`, `score`, `predicate`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2025/2026', 'Genap', 100.00, 'A', 'Sering ngelonjor', '2026-07-06 09:27:21', '2026-07-06 09:27:21');
-
 -- --------------------------------------------------------
 
 --
@@ -68,14 +61,6 @@ CREATE TABLE `attendances` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `attendances`
---
-
-INSERT INTO `attendances` (`id`, `student_id`, `extracurricular_id`, `schedule_id`, `attendance_date`, `status`, `submitted_at`, `approved_at`, `rejected_at`, `rejection_reason`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2026-07-06', 'disetujui', '2026-07-06 09:24:38', '2026-07-06 10:08:12', NULL, NULL, '2026-07-06 09:24:38', '2026-07-06 10:08:12'),
-(2, 1, 1, 2, '2026-07-06', 'menunggu_approval', '2026-07-06 10:09:00', NULL, NULL, NULL, '2026-07-06 10:09:00', '2026-07-06 10:09:00');
 
 -- --------------------------------------------------------
 
@@ -119,13 +104,6 @@ CREATE TABLE `coaches` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `coaches`
---
-
-INSERT INTO `coaches` (`id`, `user_id`, `name`, `nip`, `phone`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Hifzha \'Ilman', '12312312321', '628818147660', 'hifzhailman54@gmail.com', 'aktif', '2026-07-06 09:16:10', '2026-07-06 09:16:10');
-
 -- --------------------------------------------------------
 
 --
@@ -143,13 +121,6 @@ CREATE TABLE `extracurriculars` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `extracurriculars`
---
-
-INSERT INTO `extracurriculars` (`id`, `coach_id`, `name`, `description`, `quota`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Basket', 'afafafsadsa', 100, 'aktif', '2026-07-06 09:19:13', '2026-07-06 09:19:13');
-
 -- --------------------------------------------------------
 
 --
@@ -166,13 +137,6 @@ CREATE TABLE `extracurricular_members` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `extracurricular_members`
---
-
-INSERT INTO `extracurricular_members` (`id`, `student_id`, `extracurricular_id`, `registration_id`, `joined_at`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, '2026-07-06 09:22:58', 'aktif', '2026-07-06 09:22:58', '2026-07-06 09:22:58');
 
 -- --------------------------------------------------------
 
@@ -195,13 +159,6 @@ CREATE TABLE `extracurricular_registrations` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `extracurricular_registrations`
---
-
-INSERT INTO `extracurricular_registrations` (`id`, `student_id`, `extracurricular_id`, `status`, `parent_approved_at`, `parent_rejected_at`, `parent_rejection_reason`, `coach_approved_at`, `coach_rejected_at`, `coach_rejection_reason`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 'diterima', '2026-07-06 09:21:33', NULL, NULL, '2026-07-06 09:22:58', NULL, NULL, '2026-07-06 09:21:07', '2026-07-06 09:22:58');
-
 -- --------------------------------------------------------
 
 --
@@ -220,14 +177,6 @@ CREATE TABLE `extracurricular_schedules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `extracurricular_schedules`
---
-
-INSERT INTO `extracurricular_schedules` (`id`, `extracurricular_id`, `day`, `start_time`, `end_time`, `location`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Senin', '11:30:00', '12:00:00', 'Lapangan', 'asdsdasdasdasd', 'aktif', '2026-07-06 09:20:19', '2026-07-06 09:20:19'),
-(2, 1, 'Selasa', '10:00:00', '23:47:00', 'sadasd', 'asdasdasdsa', 'aktif', '2026-07-06 09:47:51', '2026-07-06 09:48:00');
 
 -- --------------------------------------------------------
 
@@ -321,14 +270,6 @@ CREATE TABLE `parents` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `parents`
---
-
-INSERT INTO `parents` (`id`, `user_id`, `name`, `phone`, `email`, `address`, `relationship`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Saimin', '628818147660', 'saimin123@gmail.com', 'adfsdfsdfsdfsdfsdf', 'Ayah', '2026-07-06 09:13:48', '2026-07-06 09:13:48'),
-(2, 6, 'Otu Jundi', '08818147665', 'asdasd@gmail.com', 'asddasdasdasd', 'Ayah', '2026-07-06 10:00:08', '2026-07-06 10:00:08');
-
 -- --------------------------------------------------------
 
 --
@@ -361,9 +302,11 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('CM5ksCW8q7El7mUcF1YBzYDpOCvQ2kIrxoc1B37S', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJLN3UyMWtDdTRBbUtPYjdOU1hVZVJGTGhGWnQwc1RTUjR1NjZ2d0p3IiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvMTI3LjAuMC4xOjgwMDBcL2FkbWluXC9hY2NvdW50cyIsInJvdXRlIjoiYWRtaW4uYWNjb3VudHMuaW5kZXgifSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjF9', 1783358819),
-('qMETwOEoghqYyIkG6DXVigx32IE1GdTU4aqINHZK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8655', 'eyJfdG9rZW4iOiJBQjR2YW9kamltOThxY1FkTk5XV3B0ZHA2Vk9OSVh1enpWZjBJM2MwIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAxXC9sb2dpbiIsInJvdXRlIjoibG9naW4ifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119fQ==', 1783354004),
-('Vc6ENS6uiy4PamxwNuRU9DwaIMGxp26hGPVzbicg', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJIS254M2dsVlhWQUE2a1ZnNkdMNndNY2ltR1drcUF0SHl4THZTVUw1IiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvMTI3LjAuMC4xOjgwMDBcL3BlbWJpbmFcL2Fic2Vuc2kiLCJyb3V0ZSI6ImNvYWNoLmF0dGVuZGFuY2VzLmluZGV4In0sImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjo0fQ==', 1783358831);
+('5POrYMhTvIgH02yD5MRdir4TFFWbmelyNuvSDmr9', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJWZGhndzhaMjBrMVVwcFV4VnpwYm9NREtXdUFJRGJXZ2wyc0VZbkRJIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9hZG1pblwvYWNjb3VudHMiLCJyb3V0ZSI6ImFkbWluLmFjY291bnRzLmluZGV4In0sIl9mbGFzaCI6eyJvbGQiOltdLCJuZXciOltdfSwibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiOjF9', 1783652942),
+('9FQ5cfXLoEUVHoTB3z1aTiWA7gSgqHZ44aEgSblF', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.127.0 Chrome/148.0.7778.97 Electron/42.2.0 Safari/537.36', 'eyJfdG9rZW4iOiJSQ0RFSTRPTENMeVJoQzRYaTh6YldTSTBLWXFCV3djWVJMZmo5TFlNIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9sb2dpbiIsInJvdXRlIjoibG9naW4ifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119fQ==', 1783520495),
+('kiTIg3wZCwM0JyL5KtbayLAKghKrLJP9gIpcuBia', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJzdkhSNjRaYWFNT1ZCZ3N3bjg1ZUM2SlhpTjQ3Q081QjR0d0xRSG1MIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9sb2dpbiIsInJvdXRlIjoibG9naW4ifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119fQ==', 1783516565),
+('NqznuKBGrB3SghrgCm2jFYuWi6T3sKDHXcVT0tKF', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiI0T1VYajBYTDJoRktwWG9lS3N2OVh5eXRHRFA1Wkt1eGNiNlhmc1VMIiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvMTI3LjAuMC4xOjgwMDBcL29yYW5nLXR1YVwvdmFsaWRhc2ktcGVuZGFmdGFyYW4iLCJyb3V0ZSI6InBhcmVudC5yZWdpc3RyYXRpb25zLmluZGV4In0sImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjozfQ==', 1783521045),
+('spmLF44lMOol4SNSQn8fmEIXwOoBKLtvFsSgL33p', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36', 'eyJfdG9rZW4iOiJOZUJWMW9lRjJscDhBTzY2Z25xQUxWVGh5Vm5TakR0cGxaOWpGcGlpIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9sb2dpbiIsInJvdXRlIjoibG9naW4ifSwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119fQ==', 1783652839);
 
 -- --------------------------------------------------------
 
@@ -390,13 +333,6 @@ CREATE TABLE `students` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`id`, `user_id`, `parent_id`, `nis`, `nisn`, `name`, `class`, `major`, `gender`, `birth_date`, `phone`, `email`, `address`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 'dasdds234234', '24234234', 'asdasdasdas', 'VII', 'TKJ', 'Laki-laki', '2026-07-06', '628818147660', 'hifzhailman54@gmail.com', 'sdfdsfsdfsdfs', 'aktif', '2026-07-06 09:15:00', '2026-07-06 09:15:00');
-
 -- --------------------------------------------------------
 
 --
@@ -421,12 +357,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `status`) VALUES
-(1, 'Admin SMK Yappika', 'admin@smkyappika.test', NULL, '$2y$12$lwhENkm7DLwT8G2r3ZoRduTGLBQCjjjasSuhTUiIGZW35ofFhvXqu', NULL, '2026-07-06 09:07:09', '2026-07-06 09:07:09', 'admin', 'aktif'),
-(2, 'Tadika', 'tadika@gmail.com', NULL, '$2y$12$TEQw9/vnKu5XRPzKc5nGDOFuPZxOFeyLDYdWt.U2ndBB7ZhzfLfga', NULL, '2026-07-06 09:09:58', '2026-07-06 09:09:58', 'siswa', 'aktif'),
-(3, 'ortutadika', 'ortutadika@gmail.com', NULL, '$2y$12$CUfGarBQ7A44Ft07mp3LV.yulXt/b8Kja4UHYekcTNW35Otte1Uya', NULL, '2026-07-06 09:11:56', '2026-07-06 09:11:56', 'orang_tua', 'aktif'),
-(4, 'Asep Basket', 'asep@gmail.com', NULL, '$2y$12$y1nVIkk5lN0isplLATUWAOInDYL.qdnmg9ZJCjcQmliz/kzCQiGRe', NULL, '2026-07-06 09:12:53', '2026-07-06 09:12:53', 'pembina', 'aktif'),
-(5, 'Jundi', 'jundi@gmail.com', NULL, '$2y$12$KO2zoFwnlbey.DfQ7uIb8eIPvjLJmjyAI2G7ONF8xbAuTIIiuM4cK', NULL, '2026-07-06 09:58:44', '2026-07-06 10:26:53', 'siswa', 'aktif'),
-(6, 'ortu jundi', 'ortujundi@gmail.com', NULL, '$2y$12$5hZXeSKy1XYDd103Be.LEOFRLAVUZeH3BbHLK.BedIaGKUYmkhG9e', NULL, '2026-07-06 09:59:11', '2026-07-06 10:26:59', 'orang_tua', 'aktif');
+(1, 'Admin SMK Yappika', 'admin@smkyappika.test', NULL, '$2y$12$lwhENkm7DLwT8G2r3ZoRduTGLBQCjjjasSuhTUiIGZW35ofFhvXqu', NULL, '2026-07-06 09:07:09', '2026-07-06 09:07:09', 'admin', 'aktif');
 
 --
 -- Indexes for dumped tables
@@ -594,7 +525,7 @@ ALTER TABLE `coaches`
 -- AUTO_INCREMENT for table `extracurriculars`
 --
 ALTER TABLE `extracurriculars`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `extracurricular_members`
@@ -606,7 +537,7 @@ ALTER TABLE `extracurricular_members`
 -- AUTO_INCREMENT for table `extracurricular_registrations`
 --
 ALTER TABLE `extracurricular_registrations`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `extracurricular_schedules`
