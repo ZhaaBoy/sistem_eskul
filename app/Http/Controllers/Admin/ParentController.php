@@ -67,7 +67,7 @@ class ParentController extends Controller
                 $query->whereDoesntHave('studentParent');
 
                 if ($parent->user_id) {
-                    $query->orWhereKey($parent->user_id);
+                    $query->orWhere('id', $parent->user_id);
                 }
             })
             ->orderBy('name')

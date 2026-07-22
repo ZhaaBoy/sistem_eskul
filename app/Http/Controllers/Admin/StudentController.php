@@ -71,7 +71,7 @@ class StudentController extends Controller
                 $query->whereDoesntHave('student');
 
                 if ($student->user_id) {
-                    $query->orWhereKey($student->user_id);
+                    $query->orWhere('id', $student->user_id);
                 }
             })
             ->orderBy('name')

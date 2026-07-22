@@ -68,7 +68,7 @@ class CoachController extends Controller
                 $query->whereDoesntHave('coach');
 
                 if ($coach->user_id) {
-                    $query->orWhereKey($coach->user_id);
+                    $query->orWhere('id', $coach->user_id);
                 }
             })
             ->orderBy('name')
